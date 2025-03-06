@@ -6,4 +6,23 @@
 //compare player's and computer's anwers with another function
 //decide winner in last function
 
-let playerInput = prompt("What do you want to play: Rock, Paper, or Scissors?")
+
+
+//prompts user for input then sends it to checker
+function askInput(){
+    let playerInput = prompt("What do you want to play: Rock, Paper, or Scissors?").toLowerCase();
+    checkInput(playerInput)
+}
+
+//receives user input from askInput, and checks if it matches the avaiable inputs
+function checkInput(answer){
+   if (answer == "rock" || answer == "paper" || answer == "scissors" ){
+    alert("good answer")
+   }
+   else{
+    alert("wrong try again")
+    askInput()
+   }
+}
+
+askInput()
