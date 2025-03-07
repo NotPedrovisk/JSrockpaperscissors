@@ -8,10 +8,12 @@
 //decide winner in last function
 //add score to winner and announce it
 
-
+const max_round = 5;
+let current_round = 0;
 
 let playerScore = 0 
 let comScore = 0
+
 
 //prompts user for input then sends it to checker
 
@@ -82,7 +84,31 @@ function roundResult(userIn, comIn){
 }
 
 
+//round manager controls how many rounds a game will have, in this case 5(max_round)
+//current round starts at 0 and goes up by one every round, if it is not 5 it calls the function to ask for input and check
+//results for round, then calls round manager again to check and see if round is still not 5
+//kinda of like an while loop
+function roundManager(){
+    if (current_round != max_round){
+        //starts function to check results, it then asks user for input(userIn), and the gets computer's
+        //inpute from getComputerChoice for (comIn)
+        roundResult(askInput(), getComputerChoice());
+        current_round++;
+        roundManager()
+    }
+    //if current round is 5, checks whose score is bigger, then announces the winner,ending the script
+    else{
+        if(playerScore == comScore){
+            console.log("The game ended in a tie!!")
+        }
+        else if(comScore > playerScore){
+            console.log("The computer won the game!!")
+        }
+        else if(comScore < playerScore){
+            console.log("The player won the game!!")
+        }
+    }
 
-//starts function to check results, it then asks user for input(userIn), and the gets computer's
-//inpute from getComputerChoice for (comIn)
-roundResult(askInput(), getComputerChoice())
+}
+
+roundManager()
