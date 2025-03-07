@@ -1,12 +1,17 @@
 //Pseudocode plan
+//create global variables for score
 //prompt player to play either rocks papers or scissors
 //if not one of the options ask for it again
 //get player's answer and store it in a variable
 //make function randomizing computer's answer and return it
 //compare player's and computer's anwers with another function
 //decide winner in last function
+//add score to winner and announce it
 
 
+
+let playerScore = 0 
+let comScore = 0
 
 //prompts user for input then sends it to checker
 
@@ -49,26 +54,34 @@ function getComputerChoice(){
 function roundResult(userIn, comIn){
     //tie checked first, if not a tie continue to next checks
     if (userIn == comIn){
-        console.log("TIE");
+        console.log("It's a tie");
     }
     //checks if player won(or wasnt beaten in this case) with any of the 3 options, if didn't win
     //continue to next check
+    //if player won, add one point to score
     else if (userIn == "rock" && comIn != "paper"){
-        console.log("player won")
+        console.log("You win! rock beats scissors")
+        playerScore++
     }
     else if (userIn == "paper" && comIn != "scissors"){
-        console.log("player won")
+        console.log("You win! paper beats rock")
+        playerScore++
     }
     else if (userIn == "scissors" && comIn != "rock"){
-        console.log("player won")
+        console.log("You win! scissors beats rocks")
+        playerScore++
     }
     //if every other check fails it logically means that computer won
+    //if computer won, add one point to score
     else{
-        console.log("Computer won")
+        console.log("Computer won! " + userIn + " beats " + comIn)
+        comScore++
     }
-    console.log(userIn)
-    console.log(comIn)
+
+    console.log("Player: "+ playerScore + ", Computer: " + comScore)
 }
+
+
 
 //starts function to check results, it then asks user for input(userIn), and the gets computer's
 //inpute from getComputerChoice for (comIn)
