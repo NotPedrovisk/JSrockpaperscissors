@@ -8,11 +8,25 @@
 //decide winner in last function
 //add score to winner and announce it
 
-const max_round = 5;
+const max_round = 0;
 let current_round = 0;
 
-let playerScore = 0 
-let comScore = 0
+let playerScore = 0; 
+let comScore = 0;
+
+
+const div = document.querySelector("div")
+
+const rockbtn = document.createElement("button");
+rockbtn.textContent = "Rock"
+div.appendChild(rockbtn);
+const paperbtn = document.createElement("button");
+paperbtn.textContent = "Paper"
+div.appendChild(paperbtn);
+const scibtn = document.createElement("button");
+scibtn.textContent = "Scissors"
+div.appendChild(scibtn);
+
 
 
 //prompts user for input then sends it to checker
