@@ -40,10 +40,12 @@ scibtn.addEventListener("click",  () =>{
 const resultDisplay = document.createElement("div");
 const resultText = document.createElement("p");
 const roundMessage = document.createElement("p");
+
 resultText.textContent = "COM: " + comScore + " Player: " + playerScore;
 resultDisplay.appendChild(resultText);
 resultDisplay.appendChild(roundMessage)
 div.appendChild(resultDisplay)
+
 
 
 
@@ -88,38 +90,36 @@ function getComputerChoice(){
 function roundResult(userIn, comIn){
     //tie checked first, if not a tie continue to next checks
     if (userIn == comIn){
-        console.log("It's a tie");
+        roundMessage.textContent=(userIn + " vs " + comIn + ", It's a tie");
     }
     //checks if player won(or wasnt beaten in this case) with any of the 3 options, if didn't win
     //continue to next check
     //if player won, add one point to score
     else if (userIn == "rock" && comIn != "paper"){
-        console.log("You win! rock beats scissors")
+        roundMessage.textContent=("You win! rock beats scissors")
         playerScore++
         resultText.textContent = "COM: " + comScore + " Player: " + playerScore;
     }
     else if (userIn == "paper" && comIn != "scissors"){
-        console.log("You win! paper beats rock")
+        roundMessage.textContent=("You win! paper beats rock")
         playerScore++
         resultText.textContent = "COM: " + comScore + " Player: " + playerScore;
     }
     else if (userIn == "scissors" && comIn != "rock"){
-        console.log("You win! scissors beats rocks")
+        roundMessage.textContent=("You win! scissors beats rocks")
         playerScore++
         resultText.textContent = "COM: " + comScore + " Player: " + playerScore;
     }
     //if every other check fails it logically means that computer won
     //if computer won, add one point to score
     else{
-        console.log("Computer won! " + userIn + " beats " + comIn)
+        roundMessage.textContent=("Computer won! " + userIn + " beats " + comIn)
         comScore++
         resultText.textContent = "COM: " + comScore + " Player: " + playerScore;
     }
 
-    console.log("Player: "+ playerScore + ", Computer: " + comScore)
-    return playerScore && comScore
-}
 
+}
 
 //round manager controls how many rounds a game will have, in this case 5(max_round)
 //current round starts at 0 and goes up by one every round, if it is not 5 it calls the function to ask for input and check
@@ -135,15 +135,12 @@ function roundManager(choice){
     //if current round is 5, checks whose score is bigger, then announces the winner,ending the script
     else{
         if(playerScore == comScore){
-            console.log("The game ended in a tie!!")
+            roundMessage.textContent = ("The game ended in a tie!!")
         }
         else if(comScore > playerScore){
-            console.log("The computer won the game!!")
+            roundMessage.textContent=("The computer won the game!!")
         }
         else if(comScore < playerScore){
-            console.log("The player won the game!!")
+            roundMessage.textContent=("The player won the game!!");
         }
-    }
-
-}
-
+    }}
