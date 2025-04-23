@@ -37,6 +37,14 @@ scibtn.addEventListener("click",  () =>{
     roundManager("scissors")
 })
 
+const resultDisplay = document.createElement("div");
+const resultText = document.createElement("p");
+const roundMessage = document.createElement("p");
+resultText.textContent = "COM: " + comScore + " Player: " + playerScore;
+resultDisplay.appendChild(resultText);
+resultDisplay.appendChild(roundMessage)
+div.appendChild(resultDisplay)
+
 
 
 //prompts user for input then sends it to checker
@@ -88,23 +96,28 @@ function roundResult(userIn, comIn){
     else if (userIn == "rock" && comIn != "paper"){
         console.log("You win! rock beats scissors")
         playerScore++
+        resultText.textContent = "COM: " + comScore + " Player: " + playerScore;
     }
     else if (userIn == "paper" && comIn != "scissors"){
         console.log("You win! paper beats rock")
         playerScore++
+        resultText.textContent = "COM: " + comScore + " Player: " + playerScore;
     }
     else if (userIn == "scissors" && comIn != "rock"){
         console.log("You win! scissors beats rocks")
         playerScore++
+        resultText.textContent = "COM: " + comScore + " Player: " + playerScore;
     }
     //if every other check fails it logically means that computer won
     //if computer won, add one point to score
     else{
         console.log("Computer won! " + userIn + " beats " + comIn)
         comScore++
+        resultText.textContent = "COM: " + comScore + " Player: " + playerScore;
     }
 
     console.log("Player: "+ playerScore + ", Computer: " + comScore)
+    return playerScore && comScore
 }
 
 
